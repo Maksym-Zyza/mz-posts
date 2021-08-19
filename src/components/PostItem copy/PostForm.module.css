@@ -1,0 +1,7 @@
+.form {
+  display: flex;
+  width: 80%;
+  flex-flow: column wrap;
+  margin: 20px auto;
+  align-items: center;
+}

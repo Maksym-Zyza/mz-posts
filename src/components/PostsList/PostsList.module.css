@@ -1,0 +1,12 @@
+.conteiner {
+  width: 80%;
+  margin: 0 auto;
+}
+.title {
+  text-align: center;
+}
+
+.nothing {
+  text-align: center;
+  color: #ff7961;
+}
