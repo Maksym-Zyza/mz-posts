@@ -1,5 +1,6 @@
 import React from "react";
 import PostItem from "../PostItem/PostItem";
+import uniqid from "uniqid";
 import css from "./PostsList.module.css";
 
 function PostsList({ posts, title, remove }) {
@@ -13,13 +14,13 @@ function PostsList({ posts, title, remove }) {
             <PostItem
               number={index + 1}
               post={post}
-              key={posts.id}
+              key={uniqid()}
               remove={remove}
             />
           ))}
         </div>
       ) : (
-        <h1 className={css.nothing}>Постов не дайдено!</h1>
+        <h1 className={css.nothing}>Posts not found!</h1>
       )}
     </>
   );

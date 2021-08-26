@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import PostsList from "./components/PostsList/PostsList";
 import PostForm from "./components/PostItem copy/PostForm";
-import MySelect from "./components/UI/select/MySelect";
+
+import PostsFilter from "./components/PostsFilter/PostsFilter";
+
 import "./App.css";
 
 function App() {
@@ -16,31 +18,43 @@ function App() {
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
   };
-  const [selectedSort, setSelectedSort] = useState("");
 
   const removePost = (post) => {
     setPosts(posts.filter((p) => p.id !== post.id));
   };
 
-  const sortPosts = (sort) => {
-    setSelectedSort(sort);
-    setPosts([...posts].sort((a, b) => a[sort].localeCompare(b[sort])));
-  };
+  // SORTED and SEARCH
+  const [filter, setFilter] = useState({ sort: "", query: "" });
+  // const [selectedSort, setSelectedSort] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
+
+  const sortedPosts = useMemo(() => {
+    console.log("getSortedPosts");
+    if (filter.sort) {
+      return [...posts].sort((a, b) =>
+        a[filter.sort].localeCompare(b[filter.sort])
+      );
+    }
+    return posts;
+  }, [posts, filter.sort]);
+
+  const sortedAndSearch = useMemo(() => {
+    return sortedPosts.filter((post) =>
+      post.title.toLowerCase().includes(filter.query.toLowerCase())
+    );
+  }, [filter.query, sortedPosts]);
 
   return (
     <div className="App">
       <PostForm create={createPost} />
-      <hr style={{ margin: "15px 0" }} />
-      <MySelect
-        defaultValue="Сортировка"
-        options={[
-          { value: "title", name: "По названию" },
-          { value: "body", name: "По описанию" },
-        ]}
-        value={selectedSort}
-        onChange={sortPosts}
+
+      <PostsFilter filter={filter} setFilter={setFilter} />
+
+      <PostsList
+        posts={sortedAndSearch}
+        title={"Posts List"}
+        remove={removePost}
       />
-      <PostsList posts={posts} title={"Список постов"} remove={removePost} />
     </div>
   );
 }

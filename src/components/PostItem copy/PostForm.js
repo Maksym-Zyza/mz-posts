@@ -24,18 +24,18 @@ const PostForm = ({ create, remove }) => {
         {/* Управляемий компонент */}
         <MyInput
           type="text"
-          placeholder="Название поста"
+          placeholder="Post title"
           value={post.title}
           onChange={(e) => setPost({ ...post, title: e.target.value })}
         ></MyInput>
         {/* Неуправляемий/Неконтролируемий компонент */}
         <MyInput
           type="text"
-          placeholder="Описание поста"
+          placeholder="Post description"
           value={post.body}
           onChange={(e) => setPost({ ...post, body: e.target.value })}
         ></MyInput>
-        <MyButton onClick={addNewPost}>Создать пост</MyButton>
+        <MyButton onClick={addNewPost}>Create post</MyButton>
       </form>
     </div>
   );
