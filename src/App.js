@@ -1,9 +1,10 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import PostsList from "./components/PostsList/PostsList";
-import PostForm from "./components/PostItem copy/PostForm";
-
+import PostForm from "./components/PostForm/PostForm";
+import MyModal from "./components/UI/MyModal/MyModal";
 import PostsFilter from "./components/PostsFilter/PostsFilter";
-
+import MyButton from "./components/UI/MyButton/MyButton";
+import { usePosts } from "./hooks/usePost";
 import "./App.css";
 
 function App() {
@@ -15,8 +16,10 @@ function App() {
     { id: 5, title: "HTML", body: "Description" },
   ]);
 
+  // CREATE, DELETE Posts
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
+    setModal(false);
   };
 
   const removePost = (post) => {
@@ -25,33 +28,23 @@ function App() {
 
   // SORTED and SEARCH
   const [filter, setFilter] = useState({ sort: "", query: "" });
-  // const [selectedSort, setSelectedSort] = useState("");
-  // const [searchQuery, setSearchQuery] = useState("");
-
-  const sortedPosts = useMemo(() => {
-    console.log("getSortedPosts");
-    if (filter.sort) {
-      return [...posts].sort((a, b) =>
-        a[filter.sort].localeCompare(b[filter.sort])
-      );
-    }
-    return posts;
-  }, [posts, filter.sort]);
-
-  const sortedAndSearch = useMemo(() => {
-    return sortedPosts.filter((post) =>
-      post.title.toLowerCase().includes(filter.query.toLowerCase())
-    );
-  }, [filter.query, sortedPosts]);
+  const [modal, setModal] = useState(false);
+  const sortedAndSearchPosts = usePosts(posts, filter.sort, filter.query);
 
   return (
     <div className="App">
-      <PostForm create={createPost} />
+      <MyButton style={{ marginTop: 30 }} onClick={() => setModal(true)}>
+        Create Post
+      </MyButton>
+
+      <MyModal visible={modal} setVisible={setModal}>
+        <PostForm create={createPost} />
+      </MyModal>
 
       <PostsFilter filter={filter} setFilter={setFilter} />
 
       <PostsList
-        posts={sortedAndSearch}
+        posts={sortedAndSearchPosts}
         title={"Posts List"}
         remove={removePost}
       />

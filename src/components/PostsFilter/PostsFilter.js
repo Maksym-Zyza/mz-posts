@@ -1,10 +1,11 @@
 import React from "react";
-import MySelect from "../UI/select/MySelect";
-import MyInput from "../UI/input/MyInput";
+import MySelect from "../UI/MySelect/MySelect";
+import MyInput from "../UI/MyInput/MyInput";
+import css from "./PostsFilter.module.css";
 
 function PostsFilter({ filter, setFilter }) {
   return (
-    <div>
+    <div className={css.filter_section}>
       <hr style={{ margin: "15px 0" }} />
       <MyInput
         value={filter.query}

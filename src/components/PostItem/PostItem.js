@@ -1,5 +1,5 @@
 import React from "react";
-import MyButton from "../UI/button/MyButton";
+import MyButton from "../UI/MyButton/MyButton";
 import css from "./PostItem.module.css";
 
 const PostItem = ({ post, number, remove }) => {
