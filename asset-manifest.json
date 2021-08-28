@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/mz-posts/static/css/main.c4195cfc.chunk.css",
-    "main.js": "/mz-posts/static/js/main.f9eece6b.chunk.js",
-    "main.js.map": "/mz-posts/static/js/main.f9eece6b.chunk.js.map",
+    "main.css": "/mz-posts/static/css/main.3da7f170.chunk.css",
+    "main.js": "/mz-posts/static/js/main.91209e96.chunk.js",
+    "main.js.map": "/mz-posts/static/js/main.91209e96.chunk.js.map",
     "runtime-main.js": "/mz-posts/static/js/runtime-main.6a5e1473.js",
     "runtime-main.js.map": "/mz-posts/static/js/runtime-main.6a5e1473.js.map",
-    "static/js/2.afde7908.chunk.js": "/mz-posts/static/js/2.afde7908.chunk.js",
-    "static/js/2.afde7908.chunk.js.map": "/mz-posts/static/js/2.afde7908.chunk.js.map",
+    "static/js/2.60c7ca11.chunk.js": "/mz-posts/static/js/2.60c7ca11.chunk.js",
+    "static/js/2.60c7ca11.chunk.js.map": "/mz-posts/static/js/2.60c7ca11.chunk.js.map",
     "index.html": "/mz-posts/index.html",
-    "static/css/main.c4195cfc.chunk.css.map": "/mz-posts/static/css/main.c4195cfc.chunk.css.map",
-    "static/js/2.afde7908.chunk.js.LICENSE.txt": "/mz-posts/static/js/2.afde7908.chunk.js.LICENSE.txt"
+    "static/css/main.3da7f170.chunk.css.map": "/mz-posts/static/css/main.3da7f170.chunk.css.map",
+    "static/js/2.60c7ca11.chunk.js.LICENSE.txt": "/mz-posts/static/js/2.60c7ca11.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6a5e1473.js",
-    "static/js/2.afde7908.chunk.js",
-    "static/css/main.c4195cfc.chunk.css",
-    "static/js/main.f9eece6b.chunk.js"
+    "static/js/2.60c7ca11.chunk.js",
+    "static/css/main.3da7f170.chunk.css",
+    "static/js/main.91209e96.chunk.js"
   ]
 }
