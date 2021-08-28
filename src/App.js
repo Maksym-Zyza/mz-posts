@@ -1,20 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PostsList from "./components/PostsList/PostsList";
 import PostForm from "./components/PostForm/PostForm";
 import MyModal from "./components/UI/MyModal/MyModal";
 import PostsFilter from "./components/PostsFilter/PostsFilter";
 import MyButton from "./components/UI/MyButton/MyButton";
+import Loader from "./components/UI/Loader/Loader";
+import getAll from "../src/API/PostsApi";
 import { usePosts } from "./hooks/usePost";
+import { useFeaching } from "./hooks/useFeaching";
 import "./App.css";
 
 function App() {
-  const [posts, setPosts] = useState([
-    { id: 1, title: "JavaScript", body: "Description" },
-    { id: 2, title: "React", body: "Description" },
-    { id: 3, title: "CSS", body: "Description" },
-    { id: 4, title: "Node.js", body: "Description" },
-    { id: 5, title: "HTML", body: "Description" },
-  ]);
+  const [posts, setPosts] = useState([]);
+
+  // FETCH Posts
+  const [fetchPosts, isPostsLoading, postError] = useFeaching(async () => {
+    const posts = await getAll();
+    setPosts(posts);
+  });
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   // CREATE, DELETE Posts
   const createPost = (newPost) => {
@@ -43,11 +50,17 @@ function App() {
 
       <PostsFilter filter={filter} setFilter={setFilter} />
 
-      <PostsList
-        posts={sortedAndSearchPosts}
-        title={"Posts List"}
-        remove={removePost}
-      />
+      {isPostsLoading ? (
+        <Loader />
+      ) : (
+        <PostsList
+          posts={sortedAndSearchPosts}
+          title={"Posts List"}
+          remove={removePost}
+        />
+      )}
+
+      {postError && <h3 className="error"> Error: {postError}</h3>}
     </div>
   );
 }

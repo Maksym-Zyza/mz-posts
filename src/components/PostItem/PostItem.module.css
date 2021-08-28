@@ -9,9 +9,11 @@
 }
 .post_title {
   margin: 5px 0;
+  text-align: initial;
 }
 .post_content {
   font-size: medium;
+  text-align: initial;
 }
 .post_btn {
   font-size: medium;

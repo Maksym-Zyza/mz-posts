@@ -1,7 +1,23 @@
-* {
-  margin: 0;
-  padding: 0;
+html {
   box-sizing: border-box;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: #37474f;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
@@ -13,4 +29,9 @@
 .App {
   display: block;
   width: 80%;
+  text-align: center;
+}
+
+.error {
+  color: #ed3942;
 }
